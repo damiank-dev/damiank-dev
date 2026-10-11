@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZbyszekMail Client</title>
+    <title>Tworzenie Stron Internetowych | Nowoczesne Usługi Webowe</title>
     <style>
         :root {
-            --bg-color: #1a1b26;
-            --sidebar-bg: #16161e;
-            --panel-bg: #24283b;
-            --border-color: #414868;
-            --text-color: #c0caf5;
+            --bg-color: #0f1016;
+            --card-bg: #1a1b26;
+            --border-color: #292e42;
+            --text-main: #c0caf5;
             --text-muted: #7aa2f7;
-            --accent-color: #7dcfff;
+            --accent: #7dcfff;
             --accent-hover: #bb9af7;
-            --danger-color: #f7768e;
+            --btn-text: #0f1016;
         }
 
         * {
@@ -22,323 +21,331 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
-        /* Sidebar */
-        sidebar {
-            width: 260px;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
+        header {
             display: flex;
-            flex-direction: column;
-            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
             font-size: 20px;
             font-weight: bold;
-            color: var(--accent-color);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--accent);
         }
 
-        .compose-btn {
-            background-color: var(--accent-color);
-            color: #1a1b26;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 25px;
-            transition: background 0.2s;
-        }
-
-        .compose-btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .nav-links li {
-            padding: 10px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            color: var(--text-color);
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .nav-links li:hover, .nav-links li.active {
-            background-color: var(--panel-bg);
-            color: var(--accent-color);
-        }
-
-        /* Main Content Area */
-        main {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            height: 100vh;
-        }
-
-        /* Message List */
-        .message-list {
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
-            overflow-y: auto;
-        }
-
-        .list-header {
-            padding: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .email-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .email-item:hover, .email-item.active {
-            background-color: var(--panel-bg);
-        }
-
-        .email-item .sender {
-            font-weight: bold;
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 25px;
             font-size: 14px;
-            margin-bottom: 4px;
+            transition: color 0.2s;
         }
 
-        .email-item .subject {
-            font-size: 13px;
-            color: var(--text-muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        nav a:hover {
+            color: var(--accent);
         }
 
-        /* Email Reader / Compose Viewer */
-        .email-viewer {
-            background-color: var(--bg-color);
-            padding: 30px;
-            overflow-y: auto;
+        .hero {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, rgba(26,27,38,0.5) 0%, rgba(15,16,22,1) 100%);
         }
 
-        .viewer-header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+        .hero h1 {
+            font-size: 42px;
+            max-width: 800px;
             margin-bottom: 20px;
+            color: #ffffff;
         }
 
-        .viewer-header h2 {
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: var(--btn-text);
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.2s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 50px;
+            color: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .price-card h3 {
             font-size: 22px;
             margin-bottom: 10px;
         }
 
-        .viewer-meta {
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 20px 0;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .price-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 50px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
             font-size: 13px;
             color: var(--text-muted);
         }
 
-        .viewer-body {
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        /* Compose Modal/View Styles */
-        .compose-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 600px;
-        }
-
-        .compose-form input, .compose-form textarea {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: 6px;
-            color: var(--text-color);
-            font-size: 14px;
-        }
-
-        .compose-form textarea {
-            height: 200px;
-            resize: vertical;
-        }
-
-        .compose-form button {
-            background-color: var(--accent-color);
-            color: #1a1b26;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            width: fit-content;
-        }
-
-        .empty-state {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: var(--text-muted);
-            font-size: 16px;
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            header { padding: 20px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <sidebar>
-        <div class="logo">📬 ZbyszekMail</div>
-        <button class="compose-btn" onclick="openCompose()">+ Nowa wiadomość</button>
-        <ul class="nav-links">
-            <li class="active" onclick="switchFolder('inbox', this)">Skrzynka odbiorcza</li>
-            <li onclick="switchFolder('sent', this)">Wysłane</li>
-            <li onclick="switchFolder('trash', this)">Kosz</li>
-        </ul>
-    </sidebar>
+    <header>
+        <div class="logo">⚡ WebSolutions</div>
+        <nav>
+            <a href="#features">Dlaczego warto</a>
+            <a href="#pricing">Oferta</a>
+            <a href="#contact" class="btn" style="padding: 8px 16px; font-size: 13px;">Napisz do mnie</a>
+        </nav>
+    </header>
 
-    <main>
-        <section class="message-list">
-            <div class="list-header" id="list-title">Skrzynka odbiorcza</div>
-            <div id="emails-container">
-                <!-- Tutaj wpadają maile -->
+    <section class="hero">
+        <h1>Tworzę nowoczesne strony dla firm, które <span>przyciągają klientów</span></h1>
+        <p>Pomagam lokalnym przedsiębiorstwom zaistnieć w internecie. Oferuję szybkie, responsywne i świetnie wyglądające strony WWW.</p>
+        <a href="#contact" class="btn">Zamów darmową wycenę</a>
+    </section>
+
+    <div class="container" id="features">
+        <h2 class="section-title">Co zyskujesz współpracując ze mną?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🚀 Superszybkie działanie</h3>
+                <p>Twoja strona będzie ładować się w ułamku sekundy, co przekłada się na lepsze pozycje w wyszukiwarce i zadowolenie klientów.</p>
             </div>
-        </section>
+            <div class="feature-card">
+                <h3>📱 Pełna responsywność</h3>
+                <p>Strona będzie wyglądać perfekcyjnie na każdym urządzeniu – od smartfonów, przez tablety, aż po duże ekrany komputerów.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Bezpieczeństwo i nowoczesność</h3>
+                <p>Stosuję najnowsze standardy kodowania, czysty design oraz zabezpieczenia chroniące przed niepowołanym dostępem.</p>
+            </div>
+        </div>
+    </div>
 
-        <section class="email-viewer" id="viewer-container">
-            <div class="empty-state">Wybierz wiadomość, aby ją przeczytać</div>
-        </section>
-    </main>
+    <div class="container" id="pricing">
+        <h2 class="section-title">Przykładowe pakiety usług</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div>
+                    <h3>Strona Wizytówka</h3>
+                    <p class="price">od 799 zł</p>
+                    <ul>
+                        <li>Idealna dla małych firm i usług</li>
+                        <li>Nowoczesna sekcja One-Page</li>
+                        <li>Formularz kontaktowy</li>
+                        <li>Optymalizacja pod urządzenia mobilne</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn" style="display:block; text-align:center;">Wybieram</a>
+            </div>
+
+            <div class="price-card featured">
+                <div>
+                    <span style="background:var(--accent); color:var(--btn-text); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight:bold;">NAJPOPULARNIEJSZY</span>
+                    <h3 style="margin-top: 15px;">Strona Firmowa / Landing Page</h3>
+                    <p class="price">od 1499 zł</p>
+                    <ul>
+                        <li>Rozbudowana struktura pod wielopoziomowe oferty</li>
+                        <li>Indywidualny, unikalny projekt graficzny</li>
+                        <li>Podstawowa optymalizacja SEO</li>
+                        <li>Integracja z mediami społecznościowymi i mapami</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn" style="display:block; text-align:center;">Wybieram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2 class="section-title">Porozmawiajmy o Twoim projekcie</h2>
+        <div class="contact-box">
+            <form onsubmit="handleForm(event)">
+                <div class="form-group">
+                    <label for="name">Twoje Imię / Nazwa Firmy</label>
+                    <input type="text" id="name" required placeholder="np. Jan Kowalski / Auto-Serwis">
+                </div>
+                <div class="form-group">
+                    <label for="email">Adres E-mail lub Telefon</label>
+                    <input type="text" id="email" required placeholder="np. kontakt@TwojaFirma.pl">
+                </div>
+                <div class="form-group">
+                    <label for="message">Opis projektu / Czego potrzebujesz?</label>
+                    <textarea id="message" required placeholder="Opisz krótko swoją branżę i czego oczekujesz od nowej strony..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Wyślij zapytanie</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 WebSolutions. Wszystkie prawa zastrzeżone.</p>
+    </footer>
 
     <script>
-        // Dane początkowe (można edytować lub rozbudowywać)
-        let emails = JSON.parse(localStorage.getItem('zbyszek_emails')) || [
-            { id: 1, folder: 'inbox', sender: 'github@github.com', subject: 'Security alert: New login detected', body: 'Hello,\n\nWe noticed a new login to your GitHub account from a new device. If this was you, you can safely ignore this email.' },
-            { id: 2, folder: 'inbox', sender: 'admin@system.local', subject: 'System Update Complete', body: 'All server packages, Docker containers, and security policies have been successfully updated.' }
-        ];
-
-        let currentFolder = 'inbox';
-        let activeEmailId = null;
-
-        function renderEmailList() {
-            const container = document.getElementById('emails-container');
-            container.innerHTML = '';
-
-            const filtered = emails.filter(e => e.folder === currentFolder);
-
-            if (filtered.length === 0) {
-                container.innerHTML = '<div style="padding: 20px; color: #7aa2f7; text-align: center;">Brak wiadomości w tym folderze</div>';
-                return;
-            }
-
-            filtered.forEach(email => {
-                const item = document.createElement('div');
-                item.className = `email-item ${email.id === activeEmailId ? 'active' : ''}`;
-                item.onclick = () => selectEmail(email.id);
-                item.innerHTML = `
-                    <div class="sender">${email.sender}</div>
-                    <div class="subject">${email.subject}</div>
-                `;
-                container.appendChild(item);
-            });
+        function handleForm(event) {
+            event.preventDefault();
+            alert('Dziękuję za wiadomość! Wkrótce skontaktuję się w celu omówienia szczegółów.');
+            event.target.reset();
         }
-
-        function switchFolder(folder, element) {
-            currentFolder = folder;
-            activeEmailId = null;
-            document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
-            element.classList.add('active');
-
-            const titles = { inbox: 'Skrzynka odbiorcza', sent: 'Wysłane', trash: 'Kosz' };
-            document.getElementById('list-title').innerText = titles[folder];
-
-            renderEmailList();
-            document.getElementById('viewer-container').innerHTML = '<div class="empty-state">Wybierz wiadomość, aby ją przeczytać</div>';
-        }
-
-        function selectEmail(id) {
-            activeEmailId = id;
-            renderEmailList();
-            const email = emails.find(e => e.id === id);
-            const viewer = document.getElementById('viewer-container');
-
-            viewer.innerHTML = `
-                <div class="viewer-header">
-                    <h2>${email.subject}</h2>
-                    <div class="viewer-meta">Od: <strong>${email.sender}</strong></div>
-                </div>
-                <div class="viewer-body">${email.body.replace(/\n/g, '<br>')}</div>
-            `;
-        }
-
-        function openCompose() {
-            activeEmailId = null;
-            renderEmailList();
-            const viewer = document.getElementById('viewer-container');
-
-            viewer.innerHTML = `
-                <div class="viewer-header">
-                    <h2>Nowa wiadomość</h2>
-                </div>
-                <div class="compose-form">
-                    <input type="text" id="recipient" placeholder="Do (np. znajomy@domena.pl)">
-                    <input type="text" id="subject" placeholder="Temat">
-                    <textarea id="body" placeholder="Treść wiadomości..."></textarea>
-                    <button onclick="sendEmail()">Wyślij</button>
-                </div>
-            `;
-        }
-
-        function sendEmail() {
-            const recipient = document.getElementById('recipient').value;
-            const subject = document.getElementById('subject').value;
-            const body = document.getElementById('body').value;
-
-            if (!recipient || !subject || !body) {
-                alert('Wypełnij wszystkie pola!');
-                return;
-            }
-
-            const newMsg = {
-                id: Date.now(),
-                folder: 'sent',
-                sender: recipient,
-                subject: subject,
-                body: body
-            };
-
-            emails.push(newMsg);
-            localStorage.setItem('zbyszek_emails', JSON.stringify(emails));
-
-            alert('Wiadomość została wysłana i zapisana w folderze "Wysłane"!');
-            switchFolder('sent', document.querySelectorAll('.nav-links li')[1]);
-        }
-
-        // Pierwsze ładowanie listy
-        renderEmailList();
     </script>
 </body>
 </html>
