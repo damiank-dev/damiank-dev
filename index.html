@@ -3,348 +3,528 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tworzenie Stron Internetowych | Nowoczesne Usługi Webowe</title>
+    <title>Damian | Profesjonalne Strony Internetowe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0f1016;
-            --card-bg: #1a1b26;
-            --border-color: #292e42;
-            --text-main: #c0caf5;
-            --text-muted: #7aa2f7;
-            --accent: #7dcfff;
-            --accent-hover: #bb9af7;
-            --btn-text: #0f1016;
+            --primary: #a6039e;
+            --secondary: #4c2191;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --glass-bg: rgba(255, 255, 255, 0.94);
+            --glass-border: rgba(255, 255, 255, 0.9);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Open Sans", sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
+            background: url("image.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 112% 112%;
+            background-color: #1a1a2e;
             color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            overflow-x: hidden;
+            transition: background-position 0.1s ease-out;
+        }
+
+        
+        main {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            max-width: 950px;
+            width: 100%;
+            border-radius: 1.5rem;
+            padding: 60px 50px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(166, 3, 158, 0.12);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+        }
+
+        header h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
             line-height: 1.6;
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        nav a {
+        h2.section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
             color: var(--text-main);
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(180deg, rgba(26,27,38,0.5) 0%, rgba(15,16,22,1) 100%);
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            max-width: 800px;
             margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .hero h1 span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 35px;
-        }
-
-        .btn {
-            background-color: var(--accent);
-            color: var(--btn-text);
-            padding: 14px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: background 0.2s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
             text-align: center;
-            font-size: 30px;
+        }
+
+        
+        section {
             margin-bottom: 50px;
-            color: #ffffff;
         }
 
-        .features-grid {
+        .services-list {
+            list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
-        .feature-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 12px;
-            transition: transform 0.2s, border-color 0.2s;
+        .services-list article {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #ffffff;
+            padding: 30px 25px;
+            border-radius: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+        .services-list article:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(76, 33, 145, 0.15);
+            background: #ffffff;
         }
 
-        .feature-card h3 {
-            font-size: 20px;
+        .services-list i {
+            font-size: 1.6rem;
+            color: var(--primary);
             margin-bottom: 15px;
-            color: var(--accent);
         }
 
-        .feature-card p {
+        .services-list h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .services-list p {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 14px;
+            line-height: 1.5;
         }
 
-        /* Pricing Section */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .price-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
+        
+        article.pricing-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(166, 3, 158, 0.2);
+            border-radius: 1.2rem;
+            padding: 35px 40px;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
         }
 
-        .price-card.featured {
-            border-color: var(--accent);
-            position: relative;
+        article.pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 5px;
         }
 
-        .price-card h3 {
-            font-size: 22px;
+        article.pricing-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pricing-tag {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        
+        .process-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .process-list article {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid #ffffff;
+            padding: 25px;
+            border-radius: 0.9rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .process-list article:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+        }
+
+        .process-num {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: rgba(166, 3, 158, 0.1);
+            padding: 4px 10px;
+            border-radius: 10px;
             margin-bottom: 10px;
         }
 
-        .price {
-            font-size: 36px;
-            font-weight: bold;
-            color: var(--accent);
-            margin: 20px 0;
+        .process-list h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #222;
         }
 
-        .price-card ul {
-            list-style: none;
-            margin-bottom: 30px;
+        .process-list p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        
+        aside {
+            background: linear-gradient(135deg, rgba(166, 3, 158, 0.08) 0%, rgba(76, 33, 145, 0.08) 100%);
+            border: 1px solid rgba(166, 3, 158, 0.2);
+            border-radius: 1.2rem;
+            padding: 40px;
+            text-align: center;
+        }
+
+        aside h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        aside p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        address {
+            font-style: normal;
+        }
+
+        .email-display-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(166, 3, 158, 0.3);
+            border-radius: 10px;
+            padding: 12px 20px;
+            display: inline-block;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: 0.03rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            border-radius: 8px;
+            color: #FFF;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.03rem;
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(166, 3, 158, 0.3);
+        }
+
+        button:hover {
+            box-shadow: 0 6px 20px rgba(166, 3, 158, 0.45);
+            transform: translateY(-2px);
+        }
+
+        
+        aside.toast-notification {
+            position: fixed;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a2e;
+            color: #fff;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(166, 3, 158, 0.5);
+            max-width: 450px;
+            width: 90%;
+            z-index: 1000;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: left;
         }
 
-        .price-card ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
-            color: var(--text-muted);
+        aside.toast-notification.show {
+            bottom: 30px;
         }
 
-        /* Contact Section */
-        .contact-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 50px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
+        .toast-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #d946ef;
             margin-bottom: 8px;
-            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
+        .toast-content {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 10px;
             border-radius: 6px;
-            color: var(--text-main);
-            font-size: 14px;
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
+            border-left: 3px solid var(--primary);
+            line-height: 1.4;
         }
 
         footer {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.85rem;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
             text-align: center;
-            padding: 30px;
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            font-size: 13px;
-            color: var(--text-muted);
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            header { padding: 20px 5%; }
+            main {
+                padding: 30px 20px;
+            }
+            header h1 {
+                font-size: 2.1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">⚡ WebSolutions</div>
-        <nav>
-            <a href="#features">Dlaczego warto</a>
-            <a href="#pricing">Oferta</a>
-            <a href="#contact" class="btn" style="padding: 8px 16px; font-size: 13px;">Napisz do mnie</a>
-        </nav>
-    </header>
+    <main>
+        
+        <header>
+            <span class="badge">Web Development & Design</span>
+            <h1>Tworzę strony, które <span>wyróżniają się w sieci</span></h1>
+            <p>Profesjonalne, szybkie i w pełni responsywne strony internetowe dla firm oraz marek, które chcą budować zaufanie online.</p>
+        </header>
 
-    <section class="hero">
-        <h1>Tworzę nowoczesne strony dla firm, które <span>przyciągają klientów</span></h1>
-        <p>Pomagam lokalnym przedsiębiorstwom zaistnieć w internecie. Oferuję szybkie, responsywne i świetnie wyglądające strony WWW.</p>
-        <a href="#contact" class="btn">Zamów darmową wycenę</a>
-    </section>
+        
+        <section>
+            <h2 class="section-title">Co oferuję</h2>
+            <ul class="services-list">
+                <li>
+                    <article>
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Strony Wizytówki</h3>
+                        <p>Estetyczne i przejrzyste strony idealne dla małych firm, warsztatów i usług lokalnych.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <i class="fas fa-bolt"></i>
+                        <h3>Szybki Landing Page</h3>
+                        <p>Nowoczesne strony nastawione na konwersję i szybkie pozyskiwanie klientów.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Pełna Responsywność</h3>
+                        <p>Perfekcyjne działanie i wygląd na każdym urządzeniu – od smartfona po komputer.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Indywidualny Design</h3>
+                        <p>Unikalne projekty dopasowane do charakteru Twojej marki, bez gotowych, oklepanych szablonów.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <i class="fas fa-search-dollar"></i>
+                        <h3>Optymalizacja i SEO</h3>
+                        <p>Czysty kod i struktura przygotowane pod wyszukiwarkę Google, aby klienci łatwiej Cię znaleźli.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <i class="fas fa-headset"></i>
+                        <h3>Stały Kontakt i Wsparcie</h3>
+                        <p>Stała pomoc online w trakcie tworzenia projektu oraz wsparcie techniczne po jego zakończeniu.</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
 
-    <div class="container" id="features">
-        <h2 class="section-title">Co zyskujesz współpracując ze mną?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>🚀 Superszybkie działanie</h3>
-                <p>Twoja strona będzie ładować się w ułamku sekundy, co przekłada się na lepsze pozycje w wyszukiwarce i zadowolenie klientów.</p>
-            </div>
-            <div class="feature-card">
-                <h3>📱 Pełna responsywność</h3>
-                <p>Strona będzie wyglądać perfekcyjnie na każdym urządzeniu – od smartfonów, przez tablety, aż po duże ekrany komputerów.</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔒 Bezpieczeństwo i nowoczesność</h3>
-                <p>Stosuję najnowsze standardy kodowania, czysty design oraz zabezpieczenia chroniące przed niepowołanym dostępem.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" id="pricing">
-        <h2 class="section-title">Przykładowe pakiety usług</h2>
-        <div class="pricing-grid">
-            <div class="price-card">
+        
+        <section>
+            <h2 class="section-title">Orientacyjne koszty</h2>
+            <article class="pricing-card">
                 <div>
-                    <h3>Strona Wizytówka</h3>
-                    <p class="price">od 799 zł</p>
-                    <ul>
-                        <li>Idealna dla małych firm i usług</li>
-                        <li>Nowoczesna sekcja One-Page</li>
-                        <li>Formularz kontaktowy</li>
-                        <li>Optymalizacja pod urządzenia mobilne</li>
-                    </ul>
+                    <h3>Kompletna strona internetowa</h3>
+                    <p>Indywidualny projekt, wdrożenie, optymalizacja mobilna oraz wsparcie po starcie.</p>
                 </div>
-                <a href="#contact" class="btn" style="display:block; text-align:center;">Wybieram</a>
-            </div>
+                <div class="pricing-tag">od 799 zł</div>
+            </article>
+        </section>
 
-            <div class="price-card featured">
-                <div>
-                    <span style="background:var(--accent); color:var(--btn-text); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight:bold;">NAJPOPULARNIEJSZY</span>
-                    <h3 style="margin-top: 15px;">Strona Firmowa / Landing Page</h3>
-                    <p class="price">od 1499 zł</p>
-                    <ul>
-                        <li>Rozbudowana struktura pod wielopoziomowe oferty</li>
-                        <li>Indywidualny, unikalny projekt graficzny</li>
-                        <li>Podstawowa optymalizacja SEO</li>
-                        <li>Integracja z mediami społecznościowymi i mapami</li>
-                    </ul>
-                </div>
-                <a href="#contact" class="btn" style="display:block; text-align:center;">Wybieram</a>
-            </div>
-        </div>
-    </div>
+        
+        <section>
+            <h2 class="section-title">Jak wygląda współpraca</h2>
+            <ul class="process-list">
+                <li>
+                    <article>
+                        <span class="process-num">KROK 01</span>
+                        <h4>Ustalenia</h4>
+                        <p>Rozmawiamy o Twoich potrzebach i celach biznesowych.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <span class="process-num">KROK 02</span>
+                        <h4>Projekt</h4>
+                        <p>Tworzę strukturę i unikalny wygląd ze stałym kontaktem.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <span class="process-num">KROK 03</span>
+                        <h4>Kodowanie</h4>
+                        <p>Przekładam projekt na szybki, nowoczesny i czysty kod.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <span class="process-num">KROK 04</span>
+                        <h4>Testy</h4>
+                        <p>Sprawdzam działanie na telefonach i komputerach.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <span class="process-num">KROK 05</span>
+                        <h4>Publikacja</h4>
+                        <p>Uruchamiamy stronę w sieci i podpinamy domenę.</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <span class="process-num">KROK 06</span>
+                        <h4>Wsparcie</h4>
+                        <p>Oferuję stałą pomoc online oraz opiekę po starcie.</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
 
-    <div class="container" id="contact">
-        <h2 class="section-title">Porozmawiajmy o Twoim projekcie</h2>
-        <div class="contact-box">
-            <form onsubmit="handleForm(event)">
-                <div class="form-group">
-                    <label for="name">Twoje Imię / Nazwa Firmy</label>
-                    <input type="text" id="name" required placeholder="np. Jan Kowalski / Auto-Serwis">
-                </div>
-                <div class="form-group">
-                    <label for="email">Adres E-mail lub Telefon</label>
-                    <input type="text" id="email" required placeholder="np. kontakt@TwojaFirma.pl">
-                </div>
-                <div class="form-group">
-                    <label for="message">Opis projektu / Czego potrzebujesz?</label>
-                    <textarea id="message" required placeholder="Opisz krótko swoją branżę i czego oczekujesz od nowej strony..."></textarea>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Wyślij zapytanie</button>
-            </form>
+        
+        <aside>
+            <h2>Masz projekt do zrealizowania?</h2>
+            <p>Napisz bezpośrednio, omówimy szczegóły i stworzymy coś wyjątkowego dla Twojego biznesu.</p>
+            
+            <address>
+                <div class="email-display-box" id="emailBox">kontakt.damian@atomicmail.io</div>
+            </address>
+            
+            <div>
+                <button id="copyBtn" onclick="copyEmail()">Skopiuj e-mail</button>
+            </div>
+        </aside>
+    </main>
+
+    
+    <aside class="toast-notification" id="toastNotification" role="alert" aria-live="polite">
+        <div class="toast-title">
+            <i class="fas fa-check-circle"></i> E-mail skopiowany do schowka!
         </div>
-    </div>
+        <div class="toast-content">
+            <strong>Przykładowa wiadomość:</strong><br>
+            "Dzień dobry, interesuje mnie stworzenie nowej strony internetowej..."
+        </div>
+    </aside>
 
     <footer>
-        <p>&copy; 2026 WebSolutions. Wszystkie prawa zastrzeżone.</p>
+        <p>&copy; 2026 Damian. Stworzone z pasją i czystym kodem.</p>
     </footer>
 
     <script>
-        function handleForm(event) {
-            event.preventDefault();
-            alert('Dziękuję za wiadomość! Wkrótce skontaktuję się w celu omówienia szczegółów.');
-            event.target.reset();
+        
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5);
+            const y = (e.clientY / window.innerHeight - 0.5);
+
+            const bgX = 50 + x * 12;
+            const bgY = 50 + y * 12;
+            document.body.style.backgroundPosition = `${bgX}% ${bgY}%`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            document.body.style.backgroundPosition = `50% 50%`;
+        });
+
+        
+        function copyEmail() {
+            const emailText = "kontakt.damian@atomicmail.io";
+            const copyBtn = document.getElementById('copyBtn');
+            const toast = document.getElementById('toastNotification');
+            
+            navigator.clipboard.writeText(emailText).then(() => {
+                copyBtn.textContent = "Skopiowano!";
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    copyBtn.textContent = "Skopiuj e-mail";
+                    toast.classList.remove('show');
+                }, 3500);
+            });
         }
     </script>
 </body>
